@@ -1,0 +1,142 @@
+﻿@using home.manager.Resources
+@inherits System.Web.Mvc.WebViewPage
+
+<tabset name="Settings" class="tabs-left">
+
+    <tab heading="@Str.Setting_tabName_ExpenseCategories" select="update('Expenses')">
+        <div class="pull-right">
+            <button type="button"
+                    class="addNewButton"
+                    ng-click="addCategory('Expenses')"
+                    title="@Str.nav_addnew">
+                <span class="glyphicon glyphicon-plus"></span>
+                @Str.nav_addnew
+            </button>
+        </div>
+        <div class="grid-style" id="expenseCategories"
+             style="height: 250px;"
+             data-ng-grid="categoryGrid"></div>
+        <div ng-if="selected.Expenses.length !=0">
+            <h2>Item list of [{{selected.Expenses[0].Name}}] category </h2>
+            <div class="pull-right">
+                <button type="button"
+                        class="addNewButton"
+                        ng-click="addSubCategory()"
+                        title="@Str.nav_addnew">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    @Str.nav_addnew
+                </button>
+            </div>
+            <div class="grid-style" id="expenseSubCategories"
+                 style="height: 250px;"
+                 data-ng-grid="subCategoryGrid"></div>
+        </div>
+    </tab>
+
+    <tab heading="@Str.Setting_tabName_ContactCategories" select="update('Contacts')" active="tabs.two">
+        <div class="pull-right">
+            <button type="button"
+                    class="addNewButton"
+                    ng-click="addCategory('Contacts')"
+                    title="@Str.nav_addnew">
+                <span class="glyphicon glyphicon-plus"></span>
+                @Str.nav_addnew
+            </button>
+        </div>
+        <div id="contactCategories"
+             class="grid-style"
+             style="height: 250px;"
+             data-ng-grid="contactCategoryGrid"></div>
+    </tab>
+
+    <tab heading="@Str.Setting_tabName_SecurityCategories" select="update('Security')" active="tabs.three">
+        <div class="pull-right">
+            <button type="button"
+                    ng-if="tabs.three"
+                    ng-click="addCategory('Security')"
+                    class="addNewButton"
+                    title="@Str.nav_addnew">
+                <span class="glyphicon glyphicon-plus"></span> 
+                @Str.nav_addnew
+            </button>
+        </div>
+
+        <div id="securityCategories"
+             class="grid-style"
+             style="height: 250px;"
+             data-ng-grid="securityCategoryGrid"></div>
+    </tab>
+
+    <tab heading="@Str.Setting_tabName_NoteCategories" select="update('Notes')" active="tabs.four">
+        <div class="pull-right">
+            <button type="button"
+                    class="addNewButton"
+                    ng-click="addCategory('Notes')"
+                    title="@Str.nav_addnew">
+                <span class="glyphicon glyphicon-plus"></span>
+                @Str.nav_addnew
+            </button>
+        </div>
+        <div id="noteCategories"
+             class="grid-style"
+             style="height: 250px;"
+             data-ng-grid="noteCategoryGrid"></div>
+    </tab>
+
+    <tab heading="@Str.Setting_tabName_EditTitle" active="tabs.title">
+        <div style="width: 100%">
+            <div ng-if="IsTitleChanged(title)" class="pull-right btn-group" role="group" aria-label="...">
+                <button type="button"
+                        ng-click="saveTitle(title)"
+                        class="btn btn-default"
+                        ng-show="IsTitleChanged(title)"
+                        @*                    ng-class="{'btn-danger': IsTitleChanged(title)}"*@>
+                    @Str.btn_Save
+                </button>
+            </div>
+        </div>
+
+        <div text-angular ng-model="title" text-angular-name="EDIT TITLE" ta-toolbar-class="btn-toolbar" ta-toolbar-group-class="btn-group" ta-toolbar-button-class="btn btn-default" ta-toolbar-button-active-class="active"></div>
+    </tab>
+
+</tabset>
+
+<script type="text/ng-template" id="addCategoryModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{title}}</h3>
+    </div>
+    <div class="modal-body">
+        <h4>@Str.grid_Name</h4>
+        <input type="text" ng-model="name" />
+        <h4>@Str.grid_Description</h4>
+        <input type="text" ng-model="description" required />
+    </div>
+    <div class="modal-footer">
+        <button ng-disabled="name =='' || description == ''" class="btn btn-primary" ng-click="ok()">@Str.btn_OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">@Str.btn_Cancel</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="mergeModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{title}}</h3>
+    </div>
+    <div class="modal-body">
+        <h4>{{name}} [{{desc}}]</h4>
+        <br />
+        <h4>@Str.setting_local_WillBeMovedTo</h4>
+        <br />
+        <h4 ng-if="!category">@Str.setting_local_PleaseSelectNewCategory</h4>
+        <h4 ng-if="category">{{category.Name}} [{{subCategory.Name}}]</h4>
+        <br />
+
+        <select ng-model="category" ng-change="updateSubCategories(category)" ng-options="c.Name for c in categories"></select><br>
+        <select ng-model="subCategory" ng-options="c.Name for c in subCategories"></select><br>
+    </div>
+
+
+    <div class="modal-footer">
+        <button ng-disabled="category =='' || subCategory =='' " class="btn btn-primary" ng-click="ok()">@Str.setting_local_MergeItems</button>
+        <button class="btn btn-warning" ng-click="cancel()">@Str.btn_Cancel</button>
+    </div>
+</script>

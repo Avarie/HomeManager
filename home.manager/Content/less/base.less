@@ -1,0 +1,112 @@
+﻿body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+@labelWidth: 120px;
+@inputBorderColor: #ddd;
+@inputBorderRadius: 3px;
+@inputColor: #777;
+
+@buttonColor: #428bca;
+
+input,
+select,
+textarea {
+    border: 1px @inputBorderColor solid;
+    border-radius: @inputBorderRadius;
+    color: @inputColor;
+    padding: 2px 10px;
+    font-weight: normal;
+}
+
+.modal {
+    .modal-content {
+        .modal-header {
+
+        }
+
+        .modal-body {
+            label {
+                //width: @labelWidth;
+                //text-align: right;
+            }
+        }
+
+        .modal-footer {
+            border: 0;
+        }
+    }
+}
+
+.form-group.pull-right {
+    margin-left: 10px;
+}
+
+.dropFile {
+    @background: #f8f8f8;
+    background: @background;
+
+    margin: 0;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px darken(@background, 10%) dashed;
+
+    div {
+        &.dropBox {
+            text-align: center;
+            font-size: 16px;
+            line-height: 26px;
+            color: #999;
+        }
+
+        &.dropError {
+            color: #aa0000;
+        }
+    }
+}
+
+.addNewButton {
+    height: 26px;
+    line-height: 26px;
+    background: @buttonColor;
+    border: 1px darken(@buttonColor, 10px);
+    border-radius: 2px;
+    padding: 0 10px;
+    color: #f8f8ff;
+    font-size: 12px;
+    
+    &:hover {
+        background: lighten(@buttonColor, 10%);
+    } 
+}
+
+.tab-pane {    
+    .addNewButton {
+        margin-bottom: 8px;
+    }
+}
+
+.btn-xs {
+    line-height: 1;
+    padding: 1px 2px;
+}
+
+#expenseCategories {
+    clear: right;
+}
+
+#expenseSubCategories {
+    clear: right;
+}
+
+#contactCategories {
+    clear: right;
+}
+
+#securityCategories {
+    clear: right;
+}
+
+#noteCategories {
+    clear: right;
+}

@@ -1,0 +1,45 @@
+﻿/* This file contains variable declarations (do not remove this line) */
+/*-- VARIABLES (DO NOT REMOVE THESE COMMENTS) --*/
+/**
+* @section Grid styles
+*/
+/**
+* @section Header styles
+*/
+/** @description Colors for header gradient */
+/**
+* @section Grid body styles
+*/
+/** @description Colors used for row alternation */
+/**
+* @section Sort arrow colors
+*/
+/**
+* @section Scrollbar styles
+*/
+/**
+* @section font library path
+*/
+/*-- END VARIABLES (DO NOT REMOVE THESE COMMENTS) --*/
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+.ui-grid-sortarrow {
+  right: 5px;
+  position: absolute;
+  width: 20px;
+  top: 0;
+  bottom: 0;
+  background-position: center;
+}
+.ui-grid-sortarrow.down {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+/*# sourceMappingURL=sorting.css.map */

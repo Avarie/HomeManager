@@ -1,0 +1,102 @@
+﻿@using home.manager.Resources
+@inherits System.Web.Mvc.WebViewPage
+
+<navigation add-new="addSecurityItem(false)"
+            update="update()"
+            current="current"
+            categories="categories"
+            category-enabled="true" />
+
+<div class="contactsGrid grid-style" data-ng-grid="securityItemsGrid"></div>
+
+<div class="gridFooter"> </div>
+
+<script type="text/ng-template" id="deleteSecurityItem.html">
+
+    <div class="modal-header">
+        <h3 class="modal-title">{{Title}}</h3>
+    </div>
+
+    <div class="modal-body">
+        <div class="form-group">
+            <label>@Str.grid_Date: </label>
+            {{c.Date | date:'yyyy-MM-dd HH:mm:ss'}}
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Category: </label>
+            {{c.Category.Name}}
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Title: </label>
+            {{c.Name}}
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Link: </label>
+            {{c.Link}}
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Description: </label>
+            {{c.Description}}
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary btn-xs" ng-click="ok()">
+            <span class="glyphicon glyphicon-ok">@Str.btn_OK
+        </button>
+        <button class="btn btn-warning btn-xs" ng-click="cancel()">
+            <span class="glyphicon glyphicon-remove">@Str.btn_Cancel
+        </button>
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="addSecurityItem.html">
+
+    <div class="modal-header">
+        <h3 class="modal-title">{{Title}}</h3>
+    </div>
+
+    <div class="modal-body addContact">
+        <div class="editBlock">
+            <label>@Str.grid_Category: </label>
+            <select ng-model="c.Category" ng-options="c.Name for c in categories" ng-required="true"></select>
+            <span>{{c.Category.Description}}&nbsp;</span>
+        </div>
+
+        <div class="editBlock">
+            <label>@Str.grid_Title: </label>
+            <input type="text" ng-model="c.Name" ng-required="true" />
+        </div>
+
+        <div class="editBlock">
+            <label>@Str.grid_Link: </label>
+            <input type="text" ng-model="c.Link" ng-required="true" />
+        </div>
+
+        <div class="editBlock">
+            <label>@Str.Login: </label>
+            <input type="text" ng-model="c.Login" ng-required="true" />
+        </div>
+
+        <div class="editBlock">
+            <label>@Str.Password: </label>
+            <input type="text" ng-model="c.Password" ng-required="true" />
+        </div>
+
+        <div class="editBlock">
+            <label>@Str.grid_Description: </label>
+            <input type="text" ng-model="c.Description" ng-required />
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button ng-disabled="c.Category == null || c.Contacts.length == 0"
+                class="btn btn-primary btn-sm" ng-click="ok()">
+            <span class="glyphicon glyphicon-ok"></span>@Str.btn_OK
+        </button>
+        <button class="btn btn-warning btn-sm" ng-click="cancel()">
+            <span class="glyphicon glyphicon-remove"></span>@Str.btn_Cancel
+        </button>
+    </div>
+
+</script>

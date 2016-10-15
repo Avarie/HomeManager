@@ -1,0 +1,73 @@
+﻿/* This file contains variable declarations (do not remove this line) */
+/*-- VARIABLES (DO NOT REMOVE THESE COMMENTS) --*/
+/**
+* @section Grid styles
+*/
+/**
+* @section Header styles
+*/
+/** @description Colors for header gradient */
+/**
+* @section Grid body styles
+*/
+/** @description Colors used for row alternation */
+/**
+* @section Sort arrow colors
+*/
+/**
+* @section Scrollbar styles
+*/
+/**
+* @section font library path
+*/
+/*-- END VARIABLES (DO NOT REMOVE THESE COMMENTS) --*/
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+.ui-grid {
+  border: 1px solid #d4d4d4;
+  box-sizing: content-box;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.ui-grid-vertical-bar {
+  position: absolute;
+  right: 0;
+  width: 0;
+}
+.ui-grid-header-cell:not(:last-child) .ui-grid-vertical-bar,
+.ui-grid-cell:not(:last-child) .ui-grid-vertical-bar {
+  width: 1px;
+}
+.ui-grid-header-cell:not(:last-child) .ui-grid-vertical-bar {
+  background-color: #d4d4d4;
+}
+.ui-grid-cell:not(:last-child) .ui-grid-vertical-bar {
+  background-color: #d4d4d4;
+}
+.ui-grid-header-cell:last-child .ui-grid-vertical-bar {
+  right: -1px;
+  width: 1px;
+  background-color: #d4d4d4;
+}
+.ui-grid-clearfix:before,
+.ui-grid-clearfix:after {
+  content: "";
+  display: table;
+}
+.ui-grid-clearfix:after {
+  clear: both;
+}
+.ui-grid-invisible {
+  visibility: hidden;
+}
+/*# sourceMappingURL=grid.css.map */

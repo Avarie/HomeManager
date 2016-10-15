@@ -1,0 +1,63 @@
+﻿@using home.manager.Resources
+@inherits System.Web.Mvc.WebViewPage
+
+<div class="navigation">
+
+    <div ng-if="mode == undefined" class="addNew pull-left">
+        <button type="button"
+                ng-click="addNew()"
+                title="@Str.nav_addnew">
+            <span class="glyphicon glyphicon-plus"></span>
+            @Str.nav_addnew
+        </button>
+    </div>
+
+    <div ng-show="mode == 'documents'"
+         class="addNew pull-left">
+        <button class="btn btn-lg addNew"
+                ng-file-select
+                ng-model="files"
+                title="@Str.nav_adddoc"
+                multiple="true">
+            @Str.nav_adddoc
+        </button>
+
+        <div class="dropFile" style="display: inline-block;">
+            <div ng-file-drop ng-model="files" class="dropBox"
+                 drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+                 multiple="true" allow-dir="true" accept="image/*,application/pdf">
+                @Str.nav_dropdoc
+            </div>
+            <div ng-no-file-drop class="dropError">@Str.nav_docerror</div>
+        </div>
+
+    </div>
+
+    <div class="filters pull-right">
+        <div class="filter search">
+            <input type="text"
+                   placeholder="@Str.nav_search"
+                   ng-change="update()"
+                   ng-model="current.search" />
+        </div>
+        <div ng-if="categoryEnabled" class="filter category">
+            <label>@Str.nav_category </label>
+            <select ng-model="current.category"
+                    ng-change="update()"
+                    title="@Str.nav_specifyCategory">
+                <option value="0">@Str.select_all</option>
+                <option ng-repeat="c in categories" value="{{c.Id}}">{{c.Name}}</option>
+            </select>
+        </div>
+
+        <div class="filter ownership">
+            <label>@Str.nav_owner </label>
+            <select ng-model="current.user"
+                    ng-change="update()"
+                    title="@Str.nav_specifyOwnership">
+                <option value="0">@Str.select_all</option>
+                <option ng-repeat="u in users" value="{{u.UserId}}">{{u.UserName}}</option>
+            </select>
+        </div>
+    </div>
+</div>

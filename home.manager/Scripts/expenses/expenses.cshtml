@@ -1,0 +1,108 @@
+﻿@using home.manager.Resources
+@inherits System.Web.Mvc.WebViewPage
+
+<navigation add-new="addExpense()"
+            update="update()"
+            current="current"
+            categories="categories"
+            category-enabled="true">
+</navigation>
+
+<div class="grid-style" style="clear: both" data-ng-grid="expensesGrid"></div>
+
+<div class="gridFooter">
+    <span class="spentLabel">@Str.msg_Spent</span>
+    <span ng-if="stats.nowSpent != ' '">
+        <span class="month now">{{stats.now}}</span> : {{stats.nowSpent}}
+    </span>
+    <span ng-if="stats.nowSpent != ' ' && stats.prevSpent != ' '">| </span>
+    <span ng-if="stats.prevSpent != ' '">
+        <span class="month now">{{stats.prev}}</span>: {{stats.prevSpent}}
+    </span>
+</div>
+
+<script type="text/ng-template" id="deleteExpense.html">
+    <div class="modal-header">
+        <h3 class="modal-title">@Str.ttl_DeleteExpense</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>@Str.grid_Category: </label>
+            {{exp.Category.Name}}
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Item: </label>
+            {{exp.SubCategory.Name}}
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Spent: </label>
+            {{exp.SpentMoney}}
+        </div>
+        <div class="form-group" ng-if="exp.Description != ''">
+            <label>@Str.grid_Description: </label>
+            {{exp.Description}}
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary btn-xs" ng-click="ok()">
+            <span class="glyphicon glyphicon-ok"></span>
+            @Str.btn_OK
+        </button>
+        <button class="btn btn-warning btn-xs" ng-click="cancel()">
+            <span class="glyphicon glyphicon-remove">
+                @Str.btn_Cancel
+        </button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="addExpense.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{Title}}</h3>
+    </div>
+    <div class="modal-body" on-enter="addNew()">
+        <h4>@Str.grid_Category</h4>
+        <select ng-model="category"
+                ng-change="updateSubCategories(category)"
+                ng-options="c.Name for c in categories"></select>
+
+        <label>{{category.Description}}</label>
+        <br>
+        <h4>@Str.grid_Item</h4>
+
+        <autocomplete ng-model="exp.SubCategory.Name"
+                      attr-placeholder="..."
+                      click-activation="true"
+                      data="subCategories">
+        </autocomplete>
+
+        <h4>@Str.grid_Spent</h4>
+        <input type="text"
+               ng-class="{ 'btn-danger': evil(exp.SpentMoney).error, 'text-large': giant }"
+               ng-model="exp.SpentMoney"
+               ng-required />
+
+        <p>{{evil(exp.SpentMoney).value}}</p>
+
+        <h4>@Str.grid_Description</h4>
+        <input type="text" ng-model="exp.Description" />
+    </div>
+    <div class="modal-footer">
+        <button ng-disabled="isInvalid(exp)"
+                class="btn btn-success btn-sm"
+                ng-click="addNew()">
+            <span class="glyphicon glyphicon-plus"></span>
+            @Str.btn_SubmitNew
+        </button>
+        <button ng-disabled="isInvalid(exp)"
+                class="btn btn-primary btn-sm"
+                ng-click="ok()">
+            <span class="glyphicon glyphicon-ok"></span>
+            @Str.btn_OK
+        </button>
+        <button class="btn btn-warning btn-sm"
+                ng-click="cancel()">
+            <span class="glyphicon glyphicon-remove"></span>
+            @Str.btn_Cancel
+        </button>
+    </div>
+</script>

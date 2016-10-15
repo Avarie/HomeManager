@@ -1,0 +1,66 @@
+﻿@import "base";
+
+.contactsGrid {
+    clear: both; 
+
+    .contactLines {
+        table {
+            tr {
+                td {
+                    padding: 0 3px;
+
+                    &.data {
+                        font-weight: bold;
+                    }
+
+                    &.description {
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+.addContact {
+    .editBlock {
+        display: inline-block;
+        clear: both;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    label {
+        float: left;
+        width: @labelWidth;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    input {
+        width: calc(~"(100%)" - (@labelWidth + 10px));            
+    }
+
+    .contactName {
+
+    }
+
+    table.contactsData {        
+        width: calc(~"100%" - (@labelWidth + 10px));
+        margin-bottom: 0;
+
+        tr {
+            th, td {
+                padding: 0 10px 0 0;
+
+                button {
+                    padding: 2px 4px 2px 6px;
+                }
+            }
+        }
+
+        input {
+            width: 100%;
+        }
+    }
+}

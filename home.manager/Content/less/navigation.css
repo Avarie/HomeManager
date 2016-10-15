@@ -1,0 +1,99 @@
+﻿body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+input,
+select,
+textarea {
+  border: 1px #dddddd solid;
+  border-radius: 3px;
+  color: #777777;
+  padding: 2px 10px;
+  font-weight: normal;
+}
+.modal .modal-content .modal-footer {
+  border: 0;
+}
+.form-group.pull-right {
+  margin-left: 10px;
+}
+.dropFile {
+  background: #f8f8f8;
+  margin: 0;
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px #dfdfdf dashed;
+}
+.dropFile div.dropBox {
+  text-align: center;
+  font-size: 16px;
+  line-height: 26px;
+  color: #999;
+}
+.dropFile div.dropError {
+  color: #aa0000;
+}
+.addNewButton {
+  height: 26px;
+  line-height: 26px;
+  background: #428bca;
+  border: 1px #3071a9;
+  border-radius: 2px;
+  padding: 0 10px;
+  color: #f8f8ff;
+  font-size: 12px;
+}
+.addNewButton:hover {
+  background: #6aa3d5;
+}
+.tab-pane .addNewButton {
+  margin-bottom: 8px;
+}
+.btn-xs {
+  line-height: 1;
+  padding: 1px 2px;
+}
+#expenseCategories {
+  clear: right;
+}
+#expenseSubCategories {
+  clear: right;
+}
+#contactCategories {
+  clear: right;
+}
+#securityCategories {
+  clear: right;
+}
+#noteCategories {
+  clear: right;
+}
+.navigation {
+  display: inline-block;
+  width: 100%;
+  background: #edf4fa;
+  padding: 10px;
+  margin-bottom: -3px;
+  border-radius: 5px 5px 0 0;
+  border: 1px #e1edf7 solid;
+}
+.navigation .addNew button {
+  height: 26px;
+  line-height: 26px;
+  background: #428bca;
+  border: 1px #3071a9;
+  border-radius: 2px;
+  padding: 0 10px;
+  color: #f8f8ff;
+  font-size: 12px;
+}
+.navigation .addNew button:hover {
+  background: #6aa3d5;
+}
+.navigation .filters .filter {
+  display: inline-block;
+}
+.navigation .filters .filter label {
+  margin: 0 5px 0 10px;
+  font-weight: normal;
+}
+/*# sourceMappingURL=navigation.css.map */

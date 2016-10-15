@@ -1,0 +1,38 @@
+﻿@using home.manager.Resources
+@inherits System.Web.Mvc.WebViewPage
+
+<navigation mode="documents"
+            category-enabled="false"
+            update="update()"
+            current="current">
+</navigation>
+
+
+<div class="grid-style" style="clear: both" data-ng-grid="documentsGrid"></div>
+
+<script type="text/ng-template" id="deleteDocument.html">
+        <div class="modal-header">
+            <h3 class="modal-title">@Str.ttl_DeleteDocument</h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>@Str.grid_Added: </label>
+                {{d.CreatedTime | date:'yyyy-MM-dd HH:mm:ss'}}
+            </div>
+            <div class="form-group">
+                <label>@Str.grid_FileName: </label>
+                {{d.FileName}}
+            </div>
+            <div class="form-group" ng-if="d.Description != ''">
+                <label>@Str.grid_Description: </label>
+                {{d.Description}}
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary btn-xs" ng-click="ok()">
+                <span class="glyphicon glyphicon-ok">@Str.btn_OK</button>
+            <button class="btn btn-warning btn-xs" ng-click="cancel()">
+                <span class="glyphicon glyphicon-remove">@Str.btn_Cancel
+            </button>
+        </div>
+    </script>

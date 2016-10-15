@@ -1,0 +1,95 @@
+﻿@using home.manager.Resources
+@inherits System.Web.Mvc.WebViewPage
+
+<navigation add-new="addNote(false)"
+            update="update()"
+            current="current"
+            categories="categories"
+            category-enabled="true" />
+
+<div class="notesGrid grid-style" data-ng-grid="notesGrid"></div>
+
+<div class="gridFooter">
+    <span class=""></span>
+</div>
+
+
+@*modal templates*@
+
+<script type="text/ng-template" id="deleteNote.html">
+    <div class="modal-header">
+        <h3 class="modal-title">@Str.ttl_DeleteItem</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>@Str.grid_Date: </label>
+            {{c.Date | date:'yyyy-MM-dd HH:mm:ss'}}
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Category: </label>
+            {{c.Category.Name}}
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Name: </label>
+            {{c.Name}}
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Description: </label>
+            {{c.Description}}
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary btn-xs" ng-click="ok()">
+            <span class="glyphicon glyphicon-ok">@Str.btn_OK</button>
+        <button class="btn btn-warning btn-xs" ng-click="cancel()">
+            <span class="glyphicon glyphicon-remove">@Str.btn_Cancel</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="addNote.html">
+    <div class="modal-header">
+        <h3 ng-if="!edit" class="modal-title">@Str.ttl_AddItem</h3>
+        <h3 ng-if="edit" class="modal-title">@Str.ttl_EditItem</h3>
+    </div>
+    <div class="modal-body addContact">
+        <ng-form name="manageNotes">
+            <div class="editBlock">
+                <label>@Str.grid_Category: </label>
+                <select ng-model="c.Category"
+                        ng-options="c.Name for c in categories"
+                        required />
+                <span>{{c.Category.Description}}&nbsp;</span>
+            </div>
+
+            <div class="editBlock contactName">
+                <label>@Str.grid_Name: </label>
+                <input type="text" ng-model="c.Name" required />
+            </div>
+
+            <div class="editBlock">
+                <label>@Str.grid_Description: </label>
+                <input type="text" ng-model="c.Description" required />
+            </div>
+            
+            <div class="editBlock">
+                <div text-angular ng-model="c.Content" 
+                     text-angular-name="EDIT NOTE" 
+                     ta-toolbar-class="btn-toolbar" 
+                     ta-toolbar-group-class="btn-group" 
+                     ta-toolbar-button-class="btn btn-default" 
+                     ta-toolbar-button-active-class="active"></div>
+            </div>
+
+        </ng-form>
+
+    </div>
+    <div class="modal-footer">
+        <button ng-if="IsNoteChanged(c.Content)" ng-disabled="manageNotes.$invalid" class="btn btn-success btn-sm" ng-click="save()">
+            <span class="glyphicon glyphicon-save"></span>@Str.btn_Save
+        </button>
+        <button ng-disabled="manageNotes.$invalid" class="btn btn-primary btn-sm" ng-click="ok()">
+            <span class="glyphicon glyphicon-ok"></span>@Str.btn_OK</button>
+        <button class="btn btn-warning btn-sm" ng-click="cancel()">
+            <span class="glyphicon glyphicon-remove"></span>@Str.btn_Cancel</button>
+    </div>
+</script>

@@ -1,0 +1,82 @@
+﻿/* This file contains variable declarations (do not remove this line) */
+/*-- VARIABLES (DO NOT REMOVE THESE COMMENTS) --*/
+/**
+* @section Grid styles
+*/
+/**
+* @section Header styles
+*/
+/** @description Colors for header gradient */
+/**
+* @section Grid body styles
+*/
+/** @description Colors used for row alternation */
+/**
+* @section Sort arrow colors
+*/
+/**
+* @section Scrollbar styles
+*/
+/**
+* @section font library path
+*/
+/*-- END VARIABLES (DO NOT REMOVE THESE COMMENTS) --*/
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/*
+* RTL Styles
+*/
+.ui-grid[dir=rtl] .ui-grid-header-cell,
+.ui-grid[dir=rtl] .ui-grid-footer-cell,
+.ui-grid[dir=rtl] .ui-grid-cell {
+  float: right !important;
+}
+.ui-grid[dir=rtl] .ui-grid-column-menu-button {
+  position: absolute;
+  left: 1px;
+  top: 0;
+  right: inherit;
+}
+.ui-grid[dir=rtl] .ui-grid-cell:first-child,
+.ui-grid[dir=rtl] .ui-grid-header-cell:first-child,
+.ui-grid[dir=rtl] .ui-grid-footer-cell:first-child {
+  border-right: 0;
+}
+.ui-grid[dir=rtl] .ui-grid-cell:last-child,
+.ui-grid[dir=rtl] .ui-grid-header-cell:last-child {
+  border-right: 1px solid #d4d4d4;
+  border-left: 0;
+}
+.ui-grid[dir=rtl] .ui-grid-header-cell:first-child .ui-grid-vertical-bar,
+.ui-grid[dir=rtl] .ui-grid-footer-cell:first-child .ui-grid-vertical-bar,
+.ui-grid[dir=rtl] .ui-grid-cell:first-child .ui-grid-vertical-bar {
+  width: 0;
+}
+.ui-grid[dir=rtl] .ui-grid-menu-button {
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  right: auto;
+  background: #f3f3f3;
+  border: 1px solid #d4d4d4;
+  cursor: pointer;
+  min-height: 27px;
+  font-weight: normal;
+}
+.ui-grid[dir=rtl] .ui-grid-menu-button .ui-grid-menu {
+  left: 0;
+  right: auto;
+}
+.ui-grid[dir=rtl] .ui-grid-filter-container .ui-grid-filter-button {
+  right: initial;
+  left: 0;
+}
+.ui-grid[dir=rtl] .ui-grid-filter-container .ui-grid-filter-button [class^="ui-grid-icon"] {
+  right: initial;
+  left: 10px;
+}
+/*# sourceMappingURL=rtl.css.map */

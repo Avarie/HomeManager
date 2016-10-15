@@ -1,0 +1,132 @@
+﻿@using home.manager.Resources
+@inherits System.Web.Mvc.WebViewPage
+
+<navigation add-new="addContact(false)"
+            update="update()"
+            current="current"
+            categories="categories"
+            category-enabled="true" />
+
+<div class="contactsGrid grid-style" data-ng-grid="contactsGrid"></div>
+
+<div class="gridFooter">
+    <span class="">
+        {{getCurrentContact()}}
+    </span>
+</div>
+
+
+@*modal templates*@
+
+<script type="text/ng-template" id="deleteContact.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{Title}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>@Str.grid_Date: </label>
+            {{c.Date | date:'yyyy-MM-dd HH:mm:ss'}}
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Category: </label>
+            {{c.Category.Name}}
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Contacts: </label>
+            <table class="table table-striped">
+                <tr ng-repeat="contact in c.ContactLines">
+                    <td>{{contact.Name}}</td>
+                    <td>{{contact.Description}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Name: </label>
+            {{c.Name}}
+        </div>
+        <div class="form-group">
+            <label>@Str.grid_Description: </label>
+            {{c.Description}}
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary btn-xs" ng-click="ok()">
+            <span class="glyphicon glyphicon-ok">@Str.btn_OK</button>
+        <button class="btn btn-warning btn-xs" ng-click="cancel()">
+            <span class="glyphicon glyphicon-remove">@Str.btn_Cancel</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="addContact.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{Title}}</h3>
+    </div>
+    <div class="modal-body addContact">
+        <ng-form name="manageContacts">
+            <div class="editBlock">
+                <label>@Str.grid_Category: </label>
+                <select ng-model="c.Category"
+                        ng-options="c.Name for c in categories"
+                        required />
+                <span>{{c.Category.Description}}&nbsp;</span>
+            </div>
+
+            <div class="editBlock contactName">
+                <label>@Str.grid_Name: </label>
+                <input type="text"
+                       ng-model="c.Name"
+                       required />
+            </div>
+
+            <div class="editBlock">
+                <label>@Str.grid_Contacts:</label>
+
+                <table class="contactsData">
+                    <thead>
+                        <tr>
+                            <th>@Str.grid_Name</th>
+                            <th>@Str.grid_Description</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="contact in c.ContactLines">
+                            <td>{{contact.Name}}</td>
+                            <td>{{contact.Description}}</td>
+                            <td>
+                                <button class="btn btn-xs"
+                                        ng-click="removeLine(contact)">
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <input type="text" ng-model="line" /> </td>
+                            <td> <input type="text" ng-model="description" /> </td>
+                            <td>
+                                 <button class="btn btn-xs"
+                                        ng-disabled="line=='' || description ==''"
+                                        ng-click="addLine(line, description)">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                 </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="editBlock">
+                <label>@Str.grid_Description: </label>
+                <input type="text" ng-model="c.Description" required />
+            </div>
+        </ng-form>
+    </div>
+    <div class="modal-footer">
+        <button ng-disabled="!(!manageContacts.$invalid && c.ContactLines.length > 0)"
+                class="btn btn-primary btn-sm" ng-click="ok()">
+            <span class="glyphicon glyphicon-ok"></span>@Str.btn_OK</button>
+        <button class="btn btn-warning btn-sm" ng-click="cancel()">
+            <span class="glyphicon glyphicon-remove"></span>@Str.btn_Cancel</button>
+    </div>
+</script>

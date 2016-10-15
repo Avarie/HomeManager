@@ -1,0 +1,47 @@
+﻿@import "base";
+
+.autocomplete {
+    width: 100%;
+    position: relative;
+
+    input {
+      font-size: 1.2em;
+      width: 100%;
+      padding:0.4em;
+    }
+    
+    ul {
+      position: absolute;
+      left: 0;
+      width: 100%;
+        padding: 0;
+        margin: 0;
+      border-left: 1px solid @inputBorderColor;
+      border-right: 1px solid @inputBorderColor;
+      border-bottom: 1px solid @inputBorderColor;
+      border-radius: 0 0 @inputBorderRadius @inputBorderRadius;
+      z-index: 1;
+    }
+    
+    li {
+      text-align: left;
+      list-style:none;
+      width: 100%;
+      padding:0.4em;
+      background-color: #fff;
+    }
+    
+    li.active {
+      width: 100%;
+      background-color: #4bf;
+    }
+    
+    .highlight {
+      background-color: #E2E2E2;
+    }
+    
+    li.active .highlight {
+      background: #666;
+      color: #fff;
+    }
+}

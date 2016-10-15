@@ -1,0 +1,32 @@
+﻿@using home.manager.Resources
+@inherits System.Web.Mvc.WebViewPage
+
+<div ng-if="chartsGridEnabled">
+    
+    <div class="pull-right" >
+        <select ng-model="range" 
+                ng-change="changeRange(range)"
+                class="selectpicker" data-style="btn-info">
+            <optgroup label="@Str.chart_select_Months">
+                <option value="3">@Str.chart_select_Months3</option>
+                <option value="6">@Str.chart_select_Months6</option>
+                <option value="12">@Str.chart_select_Months12</option>
+            </optgroup>
+
+            <optgroup label="@Str.chart_select_Years">
+                <option value="24">@Str.chart_select_Years2</option>
+                <option value="60">@Str.chart_select_Years5</option>
+                <option value="0">@Str.chart_select_AllTime</option>
+            </optgroup>
+        </select>
+    </div>
+
+
+    <h4 class="text-center">@Str.msg_SummaryTable</h4>
+    
+    <div class="grid-style"
+         style="clear: both"
+         data-ng-grid="chartsGrid"></div>
+</div>
+
+<div id="charts"></div>

@@ -1,0 +1,109 @@
+﻿body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+input,
+select,
+textarea {
+  border: 1px #dddddd solid;
+  border-radius: 3px;
+  color: #777777;
+  padding: 2px 10px;
+  font-weight: normal;
+}
+.modal .modal-content .modal-footer {
+  border: 0;
+}
+.form-group.pull-right {
+  margin-left: 10px;
+}
+.dropFile {
+  background: #f8f8f8;
+  margin: 0;
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px #dfdfdf dashed;
+}
+.dropFile div.dropBox {
+  text-align: center;
+  font-size: 16px;
+  line-height: 26px;
+  color: #999;
+}
+.dropFile div.dropError {
+  color: #aa0000;
+}
+.addNewButton {
+  height: 26px;
+  line-height: 26px;
+  background: #428bca;
+  border: 1px #3071a9;
+  border-radius: 2px;
+  padding: 0 10px;
+  color: #f8f8ff;
+  font-size: 12px;
+}
+.addNewButton:hover {
+  background: #6aa3d5;
+}
+.tab-pane .addNewButton {
+  margin-bottom: 8px;
+}
+.btn-xs {
+  line-height: 1;
+  padding: 1px 2px;
+}
+#expenseCategories {
+  clear: right;
+}
+#expenseSubCategories {
+  clear: right;
+}
+#contactCategories {
+  clear: right;
+}
+#securityCategories {
+  clear: right;
+}
+#noteCategories {
+  clear: right;
+}
+.autocomplete {
+  width: 100%;
+  position: relative;
+}
+.autocomplete input {
+  font-size: 1.2em;
+  width: 100%;
+  padding: 0.4em;
+}
+.autocomplete ul {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-radius: 0 0 3px 3px;
+  z-index: 1;
+}
+.autocomplete li {
+  text-align: left;
+  list-style: none;
+  width: 100%;
+  padding: 0.4em;
+  background-color: #fff;
+}
+.autocomplete li.active {
+  width: 100%;
+  background-color: #4bf;
+}
+.autocomplete .highlight {
+  background-color: #E2E2E2;
+}
+.autocomplete li.active .highlight {
+  background: #666;
+  color: #fff;
+}
+/*# sourceMappingURL=autocomplete.css.map */

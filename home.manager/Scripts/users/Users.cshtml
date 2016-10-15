@@ -1,0 +1,50 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+
+<div>
+    <h2>All Users</h2>
+    <button type="button" class="btn btn-primary btn-xs" ng-click="addUser()" title="Add New User" value="Add New"><span class="glyphicon glyphicon-plus"></span> Add new</button>
+</div>
+
+<div class="grid-style" data-ng-grid="usersGrid"></div>
+
+
+<script type="text/ng-template" id="addUser.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{Title}}</h3>
+    </div>
+    <div class="modal-body">
+        <h4>Name:</h4>
+        <input type="text" ng-model="name" ng-required />
+
+        <h4>Password:</h4>
+        <input type="text" ng-model="password" ng-required />
+
+        <h4>Confirm Password:</h4>
+        <input type="text" ng-model="confirm" ng-required />
+
+        <h4>Comment</h4>
+        <input type="text" ng-model="comment" />
+    </div>
+    <div class="modal-footer">
+        <button ng-disabled="name =='' || password =='' || password != confirm"
+                class="btn btn-primary btn-sm" ng-click="ok()">
+            <span class="glyphicon glyphicon-ok"></span> OK
+        </button>
+        <button class="btn btn-warning btn-sm" ng-click="cancel()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="deleteUser.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Delete user [{{name}}] ? </h3>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary btn-xs" ng-click="ok()">
+            <span class="glyphicon glyphicon-ok"> Yes
+        </button>
+        <button class="btn btn-warning btn-xs" ng-click="cancel()"><span class="glyphicon glyphicon-remove"> No</button>
+    </div>
+</script>
+

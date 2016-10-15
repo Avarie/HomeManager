@@ -1,0 +1,28 @@
+﻿@import "base";
+
+.navigation {
+    display: inline-block;
+    width: 100%;
+    background: lighten(@buttonColor, 43%);
+    padding: 10px;
+    margin-bottom: -3px;
+    border-radius: 5px 5px 0 0;
+    border: 1px lighten(@buttonColor, 40%) solid;
+
+    .addNew {
+        button {
+            .addNewButton;
+        }
+    }
+
+    .filters {
+        .filter {
+            display: inline-block;
+
+            label {
+                margin: 0 5px 0 10px;
+                font-weight: normal;
+            }
+        }
+    }
+}

@@ -1,0 +1,96 @@
+﻿@using home.manager.Resources
+<!DOCTYPE html>
+
+<html class="no-js">
+<head>
+    <title>home.manager</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/less/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body data-ng-app="manager" data-ng-controller="ManagerController">
+    @if (Request.IsAuthenticated)
+    {
+        <text>
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#/home">@Str.HomeManager</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        <ul class="nav navbar-nav">
+                            @{
+        if (@User.Identity.Name.ToLower() != "admin")
+        {
+            <li data-ng-class="{active : activeViewPath==='/expenses'}"><a href="#/expenses">@Str.Expenses</a></li>
+        }
+                            }
+                            <li data-ng-class="{active : activeViewPath==='/charts'}"><a href="#/charts">@Str.Charts</a></li>
+                            <li data-ng-class="{active : activeViewPath==='/documents'}"><a href="#/documents">@Str.Documents</a></li>
+                            <li data-ng-class="{active : activeViewPath==='/contacts'}"><a href="#/contacts">@Str.Contacts</a></li>
+                            <li data-ng-class="{active : activeViewPath==='/security'}"><a href="#/security">@Str.Security</a></li>
+                            <li data-ng-class="{active : activeViewPath==='/notes'}"><a href="#/notes">@Str.Notes</a></li>
+                        </ul>
+
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                @{
+                            if (@User.Identity.Name.ToLower() == "admin")
+                            {
+                                <li data-ng-class="{active : activeViewPath==='/users'}"><a href="#/users">Users</a></li>
+                            }
+                                }
+                                <li data-ng-class="{active : activeViewPath==='/settings'}"><a href="#/settings">@Str.Settings</a></li>
+                                <li>@Html.AntiForgeryToken()<a href="javascript:document.getElementById('logoutForm').submit()">@Str.LogOff @User.Identity.Name</a></li>
+
+
+                                <li data-ng-class="{active : activeViewPath==='/manage'}">
+                                    <a href="#/manage">
+                                        <span class='glyphicon glyphicon-cog'></span>
+                                    </a>
+                                </li>
+                                @*//                                <li>*@
+                                @*//                                    <a class="username" title="Manage" href="/Account/Manage">*@
+                                @*//                                        <span class='glyphicon glyphicon-cog'></span>*@
+                                @*//                                    </a>*@
+                                @*//                                </li>*@
+
+
+                            </ul>
+                        }
+@*                        <ul class="nav navbar-nav navbar-right">*@
+@*                            <li>@Html.ActionLink("Log in", "Login", "Account", null, new { id = "loginLink" })</li>*@
+@*                        </ul>*@
+
+                    </div>
+                </div>
+            </nav>
+        </text>
+    }
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular")
+    @if (Request.IsAuthenticated)
+    {
+        @Scripts.Render("~/bundles/app")
+    }
+    @RenderSection("scripts", false)
+</body>
+</html>

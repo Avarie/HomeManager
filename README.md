@@ -26,6 +26,7 @@ Quick start guide:
 
 	- clone it
 	- update connectionString in the web.config with the correct settings
+	- run update-database in Package Manager Console
 	- start the project with IIS Express (maybe you will need to copy some dll's to bin folder manually)
 	- use default login credentials (Admin/AcrossTheUniverse) to create your customer, (admin has some restrictions)
 	- create some categories in the settings tab
